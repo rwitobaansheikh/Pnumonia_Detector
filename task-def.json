@@ -1,0 +1,25 @@
+{
+    "networkMode":"awsvpc",
+    "requiresCompatibilities": [
+        "FARGATE"
+    ],
+    "family": "pneumonia-task",
+    "containerDefinitions": [
+        {
+            "name": "pneumonia-container",
+            "image": "public.ecr.aws/u6o5d5r2/pneumonia-detector:latest",
+            "essential": true,
+            "portMappings": [
+                {
+                    "containerPort": 5000,
+                    "hostPort": 5000,
+                    "protocol": "tcp"
+                }
+            ],
+            "memory": 2048,
+            "cpu": 512
+        }
+    ],
+    "memory": "2048",
+    "cpu": "512"
+}

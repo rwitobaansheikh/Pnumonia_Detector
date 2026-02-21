@@ -3,7 +3,7 @@ import torch
 import torch.nn.functional as F
 import librosa
 import numpy as np
-from flask import Flask, request, jsonify
+from flask import Flask, request, jsonify, send_from_directory
 from flask_cors import CORS
 from PIL import Image
 import torchvision.transforms as T
@@ -15,7 +15,7 @@ CORS(app)
 
 # --- 1. CONFIGURATION ---
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-MODEL_PATH = "Webapp/best_medical_model.pth"
+MODEL_PATH = "best_medical_model.pth"
 
 # Setup X-ray transforms (Exact same as training)
 img_transform = T.Compose([
@@ -26,7 +26,7 @@ img_transform = T.Compose([
 
 # Load the model into memory once
 model = PneumoniaClassifierModel().to(device)
-model.load_state_dict(torch.load(MODEL_PATH))
+model.load_state_dict(torch.load(MODEL_PATH, map_location=torch.device('cpu')))
 model.eval()
 
 # --- 2. PROCESSING FUNCTIONS ---
@@ -49,6 +49,16 @@ def process_audio(path):
     return spec_tensor
 
 # --- 3. FLASK ROUTES ---
+
+
+@app.route('/')
+def index():
+    return send_from_directory('.', 'index.html')
+
+@app.route('/<path:path>')
+def static_proxy(path):
+    return send_from_directory('.', path)
+
 @app.route('/predict', methods=['POST'])
 def predict():
     try:
@@ -88,4 +98,4 @@ def predict():
         return jsonify({"error": str(e)}), 500
 
 if __name__ == '__main__':
-    app.run(debug=False, port=5000)
+    app.run(host='0.0.0.0', debug=False, port=5000)

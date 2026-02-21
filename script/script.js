@@ -34,7 +34,8 @@ async function getPrediction(e) {
     // UI State: Loading
     btn.innerText = "Processing Diagnostic...";
     btn.disabled = true;
-    loader.style.display = 'flex';       // SHOW SPINNER
+    // loader.style.display = 'flex';       // SHOW SPINNER
+    loader.style.setProperty('display', 'flex', 'important'); 
     resultDisplay.style.display = 'none'; // Hide old results if any
 
     const formData = new FormData();
@@ -65,7 +66,7 @@ async function getPrediction(e) {
         // UI State: Reset
         btn.innerText = "Analyze Patient Data";
         btn.disabled = false;
-        loader.style.display = 'none'; // HIDE SPINNER
+        loader.style.setProperty('display', 'none', 'important');
     }
 }
 

@@ -60,15 +60,15 @@ graph TB
     Classifier -->|Probabilities| API
     API -->|JSON Response| LB
     
-    style Browser fill:#e1f5ff
-    style UI fill:#e1f5ff
-    style Cloudflare fill:#fff9c4
-    style LB fill:#c8e6c9
-    style API fill:#c8e6c9
-    style Model fill:#f8bbd0
-    style VisionBranch fill:#f8bbd0
-    style AudioBranch fill:#f8bbd0
-    style Classifier fill:#f8bbd0
+    style Browser fill:#1565c0,color:#fff,stroke:#0d47a1,stroke-width:2px
+    style UI fill:#1565c0,color:#fff,stroke:#0d47a1,stroke-width:2px
+    style Cloudflare fill:#f57f17,color:#fff,stroke:#e65100,stroke-width:2px
+    style LB fill:#2e7d32,color:#fff,stroke:#1b5e20,stroke-width:2px
+    style API fill:#2e7d32,color:#fff,stroke:#1b5e20,stroke-width:2px
+    style Model fill:#c62828,color:#fff,stroke:#b71c1c,stroke-width:2px
+    style VisionBranch fill:#c62828,color:#fff,stroke:#b71c1c,stroke-width:2px
+    style AudioBranch fill:#c62828,color:#fff,stroke:#b71c1c,stroke-width:2px
+    style Classifier fill:#c62828,color:#fff,stroke:#b71c1c,stroke-width:2px
 ```
 
 ---
@@ -141,12 +141,12 @@ graph LR
     Softmax --> Results
     Results --> Display
     
-    style XRayFile fill:#e3f2fd
-    style AudioFile fill:#e3f2fd
-    style Results fill:#c8e6c9
-    style Display fill:#c8e6c9
-    style Softmax fill:#ffe0b2
-    style Concat fill:#f0f4c3
+    style XRayFile fill:#1565c0,color:#fff,stroke:#0d47a1,stroke-width:2px
+    style AudioFile fill:#1565c0,color:#fff,stroke:#0d47a1,stroke-width:2px
+    style Results fill:#2e7d32,color:#fff,stroke:#1b5e20,stroke-width:2px
+    style Display fill:#2e7d32,color:#fff,stroke:#1b5e20,stroke-width:2px
+    style Softmax fill:#f57f17,color:#fff,stroke:#e65100,stroke-width:2px
+    style Concat fill:#f57f17,color:#fff,stroke:#e65100,stroke-width:2px
 ```
 
 ---
@@ -190,11 +190,11 @@ graph TD
     A_Out --> Concat
     Concat --> FC1 --> Drop --> FC2 --> Softmax --> Out
     
-    style V0 fill:#bbdefb
-    style A0 fill:#bbdefb
-    style Concat fill:#fff9c4
-    style Out fill:#c8e6c9
-    style Softmax fill:#ffe0b2
+    style V0 fill:#1565c0,color:#fff,stroke:#0d47a1,stroke-width:2px
+    style A0 fill:#1565c0,color:#fff,stroke:#0d47a1,stroke-width:2px
+    style Concat fill:#f57f17,color:#fff,stroke:#e65100,stroke-width:2px
+    style Out fill:#2e7d32,color:#fff,stroke:#1b5e20,stroke-width:2px
+    style Softmax fill:#f57f17,color:#fff,stroke:#e65100,stroke-width:2px
 ```
 
 ---
@@ -247,14 +247,14 @@ graph TB
     Model --> ModelStore
     App --> Logs
     
-    style IONOS fill:#fff3e0
-    style CF_DNS fill:#fff3e0
-    style CF_SSL fill:#fff9c4
-    style CF_DDoS fill:#fff9c4
-    style Server fill:#c8e6c9
-    style Docker fill:#c8e6c9
-    style App fill:#b3e5fc
-    style Model fill:#f8bbd0
+    style IONOS fill:#f57f17,color:#fff,stroke:#e65100,stroke-width:2px
+    style CF_DNS fill:#f57f17,color:#fff,stroke:#e65100,stroke-width:2px
+    style CF_SSL fill:#f57f17,color:#fff,stroke:#e65100,stroke-width:2px
+    style CF_DDoS fill:#f57f17,color:#fff,stroke:#e65100,stroke-width:2px
+    style Server fill:#2e7d32,color:#fff,stroke:#1b5e20,stroke-width:2px
+    style Docker fill:#2e7d32,color:#fff,stroke:#1b5e20,stroke-width:2px
+    style App fill:#1565c0,color:#fff,stroke:#0d47a1,stroke-width:2px
+    style Model fill:#c62828,color:#fff,stroke:#b71c1c,stroke-width:2px
 ```
 
 ---
@@ -315,11 +315,11 @@ graph LR
     Prod --> Users
     Prod --> Monitor
     
-    style Dev fill:#c8e6c9
-    style Git fill:#bbdefb
-    style GHActions fill:#fff9c4
-    style Prod fill:#a5d6a7
-    style Users fill:#c8e6c9
+    style Dev fill:#2e7d32,color:#fff,stroke:#1b5e20,stroke-width:2px
+    style Git fill:#1565c0,color:#fff,stroke:#0d47a1,stroke-width:2px
+    style GHActions fill:#f57f17,color:#fff,stroke:#e65100,stroke-width:2px
+    style Prod fill:#00796b,color:#fff,stroke:#004d40,stroke-width:2px
+    style Users fill:#2e7d32,color:#fff,stroke:#1b5e20,stroke-width:2px
 ```
 
 ---
@@ -369,12 +369,12 @@ graph TB
     Probs --> HealthyProb
     Probs --> PneumoniaProb
     
-    style XRay fill:#e3f2fd
-    style Audio fill:#e3f2fd
-    style Fusion fill:#fff9c4
-    style Probs fill:#ffe0b2
-    style HealthyProb fill:#c8e6c9
-    style PneumoniaProb fill:#ffccbc
+    style XRay fill:#1565c0,color:#fff,stroke:#0d47a1,stroke-width:2px
+    style Audio fill:#1565c0,color:#fff,stroke:#0d47a1,stroke-width:2px
+    style Fusion fill:#f57f17,color:#fff,stroke:#e65100,stroke-width:2px
+    style Probs fill:#f57f17,color:#fff,stroke:#e65100,stroke-width:2px
+    style HealthyProb fill:#2e7d32,color:#fff,stroke:#1b5e20,stroke-width:2px
+    style PneumoniaProb fill:#c62828,color:#fff,stroke:#b71c1c,stroke-width:2px
 ```
 
 ---
@@ -439,10 +439,10 @@ graph TB
     Ubuntu -->|Runs| Port5000
     Port5000 -->|Secure| HTTPS
     
-    style Frontend fill:#e3f2fd
-    style Backend fill:#fff3e0
-    style DevOps fill:#c8e6c9
-    style Infrastructure fill:#f3e5f5
+    style Frontend fill:#1565c0,color:#fff,stroke:#0d47a1,stroke-width:2px
+    style Backend fill:#f57f17,color:#fff,stroke:#e65100,stroke-width:2px
+    style DevOps fill:#2e7d32,color:#fff,stroke:#1b5e20,stroke-width:2px
+    style Infrastructure fill:#7b1fa2,color:#fff,stroke:#4a148c,stroke-width:2px
 ```
 
 ---

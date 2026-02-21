@@ -128,24 +128,48 @@ button {
 }
 
 /* The spinner container - hidden by default */
-#loader-container {
+/* #loader-container {
     display: none;
     flex-direction: column;
     align-items: center;
     margin-top: 20px;
 }
 
-/* The actual spinning ring */
+
 .spinner {
     width: 50px;
     height: 50px;
     border: 5px solid #f3f3f3;
-    border-top: 5px solid #3498db; /* Professional blue */
+    border-top: 5px solid #3498db; 
     border-radius: 50%;
     animation: spin 1s linear infinite;
 }
 
-/* The animation logic */
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+} */
+
+#loader-container {
+    display: none !important; /* Forces it to stay hidden until JS triggers 'flex' */
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+    width: 100%;
+}
+
+/* Ensure the spinner is visible and moving when displayed */
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #5c7cfa; /* Updated to match your purple/blue theme */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    display: block; /* Ensures the ring itself is rendered */
+}
+
 @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }

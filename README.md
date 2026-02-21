@@ -14,7 +14,8 @@ A multimodal deep learning application that detects pneumonia using both chest X
 6. [Deployment](#deployment)
 7. [CI/CD Pipeline](#cicd-pipeline)
 8. [Technical Details](#technical-details)
-9. [Live Application](#live-application)
+9. [Architecture Diagrams](#architecture-diagrams)
+10. [Live Application](#live-application)
 
 ---
 
@@ -628,6 +629,21 @@ Pneumonia_detector/Webapp/
 - Reduce batch size (currently processes 1 file at a time)
 - Close other applications
 - Use CPU instead of GPU: Edit device line in `app.py`
+
+---
+
+## Architecture Diagrams
+
+For comprehensive visual documentation of the system architecture, including data flow, model architecture, deployment infrastructure, and CI/CD pipeline, please refer to the [Architecture Diagrams](ARCHITECTURE.md) document.
+
+**Diagrams included:**
+1. System Architecture Overview
+2. Detailed Data Flow Pipeline
+3. Model Architecture in Detail
+4. Deployment Architecture
+5. CI/CD Pipeline Architecture
+6. Multimodal Fusion Architecture
+7. Technology Stack
 
 ---
 

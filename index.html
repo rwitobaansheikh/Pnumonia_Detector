@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./stylesheets/style.css">
     <title>PneumoScan AI</title>
 </head>
@@ -8,16 +9,20 @@
     <h1>Patient Data Analysis</h1>
     <main>
         <form class="upload-container" id="uploadForm">
-            <label for="xrayInput">X-Ray Image:</label>
-            <input type="file" id="xrayInput" accept="image/*">
-            
-            <img id="imagePreview" style="display:none; width:100%; max-height:200px; object-fit:contain; margin-top:10px; border-radius:8px;">
-
-            <label for="audioInput" style="margin-top:15px;">Audio Recording:</label>
-            <input type="file" id="audioInput" accept="audio/*">
-            
-            <audio id="audioPreview" controls style="display:none; width:100%; margin-top:10px;"></audio>
-
+            <div class="user_inputs">
+                <div class="input-group">
+                    <label for="xrayInput">X-Ray Image:</label>
+                    <input type="file" id="xrayInput" accept="image/*">
+                    
+                    <img id="imagePreview" style="display:none; width:100%; max-height:200px; object-fit:contain; margin-top:10px; border-radius:8px;">
+                </div>
+                <div class="input-group">
+                    <label for="audioInput" style="margin-top:15px;">Audio Recording:</label>
+                    <input type="file" id="audioInput" accept="audio/*">
+                    
+                    <audio id="audioPreview" controls style="display:none; width:100%; margin-top:10px;"></audio>
+                </div>
+            </div>
             <button type="submit" id="submit" style="margin-top:20px;">Analyze Patient Data</button>
             <button type="button" id="resetBtn" style="margin-top:20px;">New Prediction</button>
         </form>
@@ -26,6 +31,10 @@
             <h3>Analysis Result:</h3>
             <p id="pneuResult"></p>
             <p id="healthyResult"></p>
+        </div>
+        <div id="loader-container">
+            <div class="spinner"></div>
+            <p class="loading-text">AI is analyzing the X-ray...</p>
         </div>
     </main>
 

@@ -28,8 +28,14 @@ async function getPrediction(e) {
     if(!xray || !audio) return alert("Please upload both files!");
 
     const btn = document.getElementById('submit');
+    const loader = document.getElementById('loader-container'); // Get the loader
+    const resultDisplay = document.getElementById('resultDisplay');
+
+    // UI State: Loading
     btn.innerText = "Processing Diagnostic...";
     btn.disabled = true;
+    loader.style.display = 'flex';       // SHOW SPINNER
+    resultDisplay.style.display = 'none'; // Hide old results if any
 
     const formData = new FormData();
     formData.append('xray', xray);
@@ -43,12 +49,12 @@ async function getPrediction(e) {
 
         const data = await response.json();
         
-        // Display Results
-        document.getElementById('resultDisplay').style.display = 'block';
+        // UI State: Success
+        resultDisplay.style.display = 'block';
         
         const pneu = document.getElementById('pneuResult');
         pneu.innerText = `Pneumonia Risk: ${data.pneumonia}%`;
-        pneu.style.color = data.pneumonia > 50 ? "#e53e3e" : "#38a169"; // Red if high risk, Green if low
+        pneu.style.color = data.pneumonia > 50 ? "#e53e3e" : "#38a169"; 
         
         document.getElementById('healthyResult').innerText = `Healthy Probability: ${data.healthy}%`;
 
@@ -56,16 +62,17 @@ async function getPrediction(e) {
         console.error(err);
         alert("Server error. Ensure Flask is running on port 5000.");
     } finally {
+        // UI State: Reset
         btn.innerText = "Analyze Patient Data";
         btn.disabled = false;
+        loader.style.display = 'none'; // HIDE SPINNER
     }
 }
 
+// 4. Reset Logic
 document.getElementById('resetBtn').addEventListener('click', function() {
-    // 1. Reset the actual form (clears file inputs)
     document.getElementById('uploadForm').reset();
 
-    // 2. Hide and clear Previews
     const imagePreview = document.getElementById('imagePreview');
     const audioPreview = document.getElementById('audioPreview');
     
@@ -73,11 +80,11 @@ document.getElementById('resetBtn').addEventListener('click', function() {
     imagePreview.style.display = "none";
     
     audioPreview.src = "";
-    audioPreview.pause(); // Stop audio if playing
+    audioPreview.pause(); 
     audioPreview.style.display = "none";
 
-    // 3. Hide the AI results
     document.getElementById('resultDisplay').style.display = "none";
+    document.getElementById('loader-container').style.display = "none"; // Hide loader on reset
     
     console.log("Form cleared for new patient data.");
 });

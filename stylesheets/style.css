@@ -1,11 +1,12 @@
 /* stylesheets/style.css */
 
 /* 1. Global Reset & Box Sizing */
-* {
+*, *::before, *::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
 }
+
 
 body {
     font-family: 'Inter', -apple-system, sans-serif;
@@ -14,40 +15,48 @@ body {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 20px; /* Reduced top padding for mobile */
+    padding: 1rem;
     min-height: 100vh;
 }
 
 h1 {
     color: #2d3748;
     margin-bottom: 20px;
+    margin-top: 1rem;
     font-weight: 700;
     text-align: center;
-    font-size: 1.5rem; /* Scales better on small screens */
+    font-size: 1.8rem; /* Readable on mobile without needing to zoom */
 }
 
-/* 2. Responsive Containers */
-.upload-container, #resultDisplay {
+/* 2. Containers — mobile-first, expand on desktop */
+.upload-container,
+#resultDisplay {
     background: white;
-    padding: 1.5rem;
+    padding: 1.25rem;
     border-radius: 12px;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
     display: flex;
     flex-direction: column;
     gap: 1.2rem;
-    
-    /* THE KEY TO RESPONSIVENESS: */
-    width: 100%;       /* Full width on small phones */
-    max-width: 500px;  /* Professional size on desktop */
+
+    width: 100%;
+    max-width: min(95vw, 600px); /* fills mobile, capped on desktop */
 }
 
-/* 3. Inputs & Previews */
+/* 3. user_inputs: vertical on mobile, horizontal on desktop */
+.user_inputs {
+    display: flex;
+    flex-direction: column; /* stacked on phones */
+    gap: 1rem;
+}
+
+/* 4. Inputs & Previews */
 input[type="file"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #e2e8f0;
     border-radius: 6px;
-    font-size: 0.9rem;
+    font-size: 1rem; 
     background: #f8fafc;
     cursor: pointer;
 }
@@ -61,7 +70,7 @@ input[type="file"] {
     background: #f1f5f9;
 }
 
-/* 4. Buttons & Interaction */
+/* 5. Buttons & Interaction */
 button {
     width: 100%;
     padding: 14px;
@@ -71,10 +80,11 @@ button {
     font-size: 1rem;
     cursor: pointer;
     transition: all 0.2s ease;
+    touch-action: manipulation; 
 }
 
 #submit {
-    background-color: #5c7cfa; /* Updated to match your screenshot blue */
+    background-color: #5c7cfa;
     color: white;
 }
 
@@ -91,19 +101,20 @@ button {
     background-color: #718096;
 }
 
-/* Stack buttons on small phones, side-by-side on tablets */
 .button-group {
     display: flex;
-    flex-direction: column;
+    flex-direction: column; 
     gap: 10px;
 }
 
-/* 5. Results Section */
+/* 6. Results Section */
 #resultDisplay {
     margin-top: 20px;
     border-left: 6px solid #5c7cfa;
     transition: all 0.3s ease-in-out;
     display: none;
+    max-height: 70vh;
+    overflow-y: auto;
 }
 
 #resultDisplay h3 {
@@ -116,18 +127,58 @@ button {
     font-weight: bold;
 }
 
-/* 6. Media Query for Desktop/Tablet (Screen > 480px) */
-@media (min-width: 480px) {
+/* The spinner container - hidden by default */
+#loader-container {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* The actual spinning ring */
+.spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid #f3f3f3;
+    border-top: 5px solid #3498db; /* Professional blue */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+/* The animation logic */
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loading-text {
+    margin-top: 10px;
+    font-family: Arial, sans-serif;
+    color: #555;
+}
+
+/* 7. Desktop/Tablet layout (≥ 800px) */
+@media (min-width: 800px) {
     h1 {
         font-size: 2rem;
         margin-top: 30px;
     }
-    
-    .button-group {
-        flex-direction: row; /* Buttons sit side-by-side on larger screens */
+
+    .user_inputs {
+        flex-direction: row; /* side-by-side on large screens */
+        align-items: flex-start;
     }
-    
-    .upload-container, #resultDisplay {
+
+    .user_inputs > * {
+        flex: 1; /* each child takes equal width */
+    }
+
+    .button-group {
+        flex-direction: row;
+    }
+
+    .upload-container,
+    #resultDisplay {
         padding: 2rem;
     }
 }

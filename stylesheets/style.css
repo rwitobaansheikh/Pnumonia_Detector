@@ -209,13 +209,20 @@ button {
 
 /* 10. Footer Styling */
 footer {
-    margin-top: 3rem;
+    position: fixed;
+    bottom: 0;
+    left: 0;
     width: 100%;
     background-color: #2d3748;
     color: #e2e8f0;
     text-align: center;
     padding: 2rem 1rem;
     border-top: 2px solid #4a5568;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    margin: 0;
 }
 
 .footer-content {
@@ -250,7 +257,7 @@ footer {
 @media (max-width: 768px) {
     footer {
         padding: 1.5rem 1rem;
-        margin-top: 2rem;
+        margin: 0;
     }
 
     .footer-content p {

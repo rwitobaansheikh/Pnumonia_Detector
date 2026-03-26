@@ -546,7 +546,7 @@ Move to device (GPU/CPU)
 
 1. **Forward Pass**:
    - Vision branch processes X-ray → 256 features
-   - Audio branch processes spectrogram → 128 features
+   - Audio branch proceses spectrogram → 128 features
    - Features concatenated → 384 dimensions
 
 2. **Classification**:
